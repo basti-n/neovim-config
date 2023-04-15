@@ -20,8 +20,14 @@ lsp.configure('lua_ls', {
 })
 
 local util = require('lspconfig.util')
-local root_dir = util.root_pattern('angular.json', 'project.json')
+local root_dir = util.root_pattern('nx.json', 'package.json')
 require'lspconfig'.angularls.setup{
+  root_dir = root_dir
+}
+require'lspconfig'.tsserver.setup{
+  root_dir = root_dir
+}
+require'lspconfig'.eslint.setup{
   root_dir = root_dir
 }
 
@@ -67,8 +73,6 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.setup()
-
-vim.api.nvim_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true })
 
 vim.diagnostic.config({
     virtual_text = true
