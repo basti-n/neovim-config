@@ -37,3 +37,13 @@ vim.keymap.set('n', '<leader>ff', ':NvimTreeFindFile<CR>', {
 vim.keymap.set('n', '<leader>fx', ':NvimTreeFocus<CR>', {
     noremap = true
 })
+
+vim.keymap.set('n', '<leader>fs+', ':NvimTreeResize +20<CR>', {
+    noremap = true
+})
+vim.keymap.set('n', '<leader>fs-', ':NvimTreeResize -20<CR>', {
+    noremap = true
+})
+vim.keymap.set('n', '<leader>fsb', ':NvimTreeResize 40<CR>', {
+    noremap = true
+})
