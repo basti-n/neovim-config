@@ -26,6 +26,9 @@ telescope.setup({
 })
 
 require("telescope").setup {
+    defaults = {
+        path_display = { "truncate" },
+    },
     pickers = {
         live_grep = {
             additional_args = function(opts)
@@ -36,7 +39,7 @@ require("telescope").setup {
             file_ignore_patterns = {
                 "node_modules/.*",
                 ".git/.*"
-            }
+            },
         }
     },
 }
