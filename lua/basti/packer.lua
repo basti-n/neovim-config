@@ -102,5 +102,7 @@ return require('packer').startup(function(use)
     use { 'ray-x/lsp_signature.nvim' }
 
     use { 'lewis6991/gitsigns.nvim' }
+
+    use { 's1n7ax/nvim-terminal' }
 end)
 
