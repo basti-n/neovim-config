@@ -60,3 +60,4 @@ end)
 -- LSP 
 vim.keymap.set('n', '<leader>dw', builtin.diagnostics, {})
 vim.keymap.set('n', '<leader>df', ':Telescope diagnostics bufnr=0<CR>', {})
+vim.keymap.set('n', '<leader>vrr', builtin.lsp_references, {})
