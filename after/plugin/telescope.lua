@@ -63,3 +63,4 @@ vim.keymap.set('n', '<leader>df', ':Telescope diagnostics bufnr=0<CR>', {})
 vim.keymap.set('n', '<leader>vrr', builtin.lsp_references, {})
 
 require("telescope").load_extension("ui-select")
+require("telescope").load_extension("lazygit")
