@@ -104,5 +104,7 @@ return require('packer').startup(function(use)
     use { 'lewis6991/gitsigns.nvim' }
 
     use { 's1n7ax/nvim-terminal' }
+
+    use {'nvim-telescope/telescope-ui-select.nvim' }
 end)
 
