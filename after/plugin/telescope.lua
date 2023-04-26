@@ -10,6 +10,11 @@ table.insert(vimgrep_arguments, "--hidden")
 table.insert(vimgrep_arguments, "--glob")
 table.insert(vimgrep_arguments, "!**/.git/*")
 
+-- Use smart case
+table.insert(vimgrep_arguments, "--smart-case")
+
+
+
 telescope.setup({
     defaults = {
         -- `hidden = true` is not supported in text grep commands.
@@ -20,7 +25,7 @@ telescope.setup({
         find_files= {
             hidden = true,
             -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-            find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+            find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*", "--smart-case" },
         },
      },
 })
