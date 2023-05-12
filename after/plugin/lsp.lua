@@ -41,11 +41,23 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<C-Space>'] = cmp.mapping(cmp.mapping.complete({}), { 'i', 'c' }),
 })
 
+
+local sources = {
+    { name = 'nvim_lsp' },
+    { name = 'nvim_lua' },
+    { name = 'path' },
+    { name = 'calc' },
+    { name = 'nvim_lsp_signature_help' },
+    { name = 'luasnip' },
+    { name = 'buffer' },
+}
+
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
+  mapping = cmp_mappings,
+  sources = sources
 })
 
 lsp.set_preferences({
