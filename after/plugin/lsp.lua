@@ -52,12 +52,19 @@ local sources = {
     { name = 'buffer' },
 }
 
+local snippet = {
+    expand = function(args)
+        require 'luasnip'.lsp_expand(args.body)
+    end
+}
+
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
   mapping = cmp_mappings,
-  sources = sources
+  sources = sources,
+  snippet = snippet
 })
 
 lsp.set_preferences({
