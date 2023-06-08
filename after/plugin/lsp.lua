@@ -39,8 +39,27 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<C-y>'] = cmp.mapping.confirm({ select = true }),
   -- show suggestion before typing
   ['<C-Space>'] = cmp.mapping(cmp.mapping.complete({}), { 'i', 'c' }),
+
+  ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+  ["<C-f>"] = cmp.mapping.scroll_docs(4),
+  ["<C-e>"] = cmp.mapping.abort(),
 })
 
+local lspkind = require('lspkind')
+local formatting  = {
+    format = lspkind.cmp_format {
+        with_text = true,
+        menu = {
+            buffer = "[buf]",
+            nvim_lsp = "[LSP]",
+            nvim_lua = "[api]",
+            path = "[path]",
+            luasnip = "[snip]",
+            gh_issues = "[issues]",
+        },
+        mode = 'symbol_text',
+    },
+}
 
 local sources = {
     { name = 'nvim_lsp' },
@@ -58,13 +77,20 @@ local snippet = {
     end
 }
 
+local experimental = {
+    native_menu = false,
+    ghost_text = false,
+}
+
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
   mapping = cmp_mappings,
   sources = sources,
-  snippet = snippet
+  snippet = snippet,
+  formatting = formatting,
+  experimental = experimental
 })
 
 lsp.set_preferences({

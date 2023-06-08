@@ -36,8 +36,13 @@ return require('packer').startup(function(use)
     -- angular specific deps
 
     use { 'L3MON4D3/LuaSnip' }
+
     use { 'hrsh7th/nvim-cmp' }
+    use { 'hrsh7th/cmp-buffer' }
+    use { 'hrsh7th/cmp-path' }
+    use { 'hrsh7th/cmp-nvim-lua' }
     use { 'saadparwaiz1/cmp_luasnip' }
+    use { 'onsails/lspkind-nvim' }
 
     use {
         'VonHeikemen/lsp-zero.nvim',
