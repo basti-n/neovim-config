@@ -96,5 +96,15 @@ return require('packer').startup(function(use)
     use { 'nvim-telescope/telescope-ui-select.nvim' }
 
     use { 'akinsho/git-conflict.nvim', tag = "*" }
+
+    use({
+        "utilyre/barbecue.nvim",
+        tag = "*",
+        requires = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons", -- optional dependency
+        },
+        after = "nvim-web-devicons", -- keep this if you're using NvChad
+    })
 end)
 
