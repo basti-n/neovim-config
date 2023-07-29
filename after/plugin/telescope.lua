@@ -13,12 +13,10 @@ table.insert(vimgrep_arguments, "!**/.git/*")
 -- Use smart case
 table.insert(vimgrep_arguments, "--smart-case")
 
-
-
-telescope.setup({
+telescope.setup {
     defaults = {
-        -- `hidden = true` is not supported in text grep commands.
         hidden = true,
+        path_display = { "truncate" },
         vimgrep_arguments = vimgrep_arguments,
     },
     pickers = {
@@ -27,18 +25,8 @@ telescope.setup({
             -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
             find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*", "--smart-case" },
         },
-     },
-})
-
-require("telescope").setup {
-    defaults = {
-        path_display = { "truncate" },
-    },
-    pickers = {
         live_grep = {
-            additional_args = function(opts)
-                return {"--hidden"}
-            end,
+            find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*", "--smart-case" },
         },
         defaults = {
             file_ignore_patterns = {
