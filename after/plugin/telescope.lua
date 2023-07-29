@@ -55,5 +55,12 @@ vim.keymap.set('n', '<leader>dw', builtin.diagnostics, {})
 vim.keymap.set('n', '<leader>df', ':Telescope diagnostics bufnr=0<CR>', {})
 vim.keymap.set('n', '<leader>vrr', builtin.lsp_references, {})
 
+-- Quickfix (cdo)
+local actions = require('telescope.actions')
+vim.keymap.set('n', '<C-q>', function()
+    actions.smart_send_to_qflist()
+    actions.open_qflist()
+end)
+
 require("telescope").load_extension("ui-select")
 require("telescope").load_extension("lazygit")
