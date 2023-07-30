@@ -82,15 +82,28 @@ local experimental = {
     ghost_text = false,
 }
 
+vim.api.nvim_set_hl(0, "LualineYellow", { bg = "#b5bd68", fg = "#000000", bold = true  })
+local window = {
+    completion = cmp.config.window.bordered({
+        winhighlight = 'Normal:PmenuSel,FloatBorder:PmenuSel,CursorLine:LualineYellow,Search:None'
+    }),
+    documentation = cmp.config.window.bordered({
+        winhighlight = 'Normal:PmenuSel,FloatBorder:PmenuSel,CursorLine:LualineYellow,Search:None'
+    })
+}
+cmp.setup({
+    window = window
+})
+
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
-  mapping = cmp_mappings,
-  sources = sources,
-  snippet = snippet,
-  formatting = formatting,
-  experimental = experimental
+    mapping = cmp_mappings,
+    sources = sources,
+    snippet = snippet,
+    formatting = formatting,
+    experimental = experimental,
 })
 
 lsp.set_preferences({
