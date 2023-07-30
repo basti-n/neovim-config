@@ -106,5 +106,7 @@ return require('packer').startup(function(use)
         },
         after = "nvim-web-devicons", -- keep this if you're using NvChad
     })
+
+    use { "NvChad/nvim-colorizer.lua"}
 end)
 
