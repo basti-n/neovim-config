@@ -83,6 +83,8 @@ local experimental = {
 }
 
 vim.api.nvim_set_hl(0, "LualineYellow", { bg = "#b5bd68", fg = "#000000", bold = true  })
+vim.api.nvim_set_hl(0, "CmpItemKind", { fg = "#9ccfd8"})
+vim.api.nvim_set_hl(0, "CmpItemKindVariable", { fg = "#c3a7e7"})
 local window = {
     completion = cmp.config.window.bordered({
         winhighlight = 'Normal:PmenuSel,FloatBorder:PmenuSel,CursorLine:LualineYellow,Search:None'
