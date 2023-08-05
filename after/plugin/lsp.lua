@@ -46,6 +46,9 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 })
 
 local lspkind = require('lspkind')
+lspkind.init({
+    preset = 'codicons',
+})
 local formatting  = {
     format = lspkind.cmp_format {
         with_text = true,

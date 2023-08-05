@@ -108,5 +108,7 @@ return require('packer').startup(function(use)
     })
 
     use { "NvChad/nvim-colorizer.lua"}
+
+    use { "mortepau/codicons.nvim" }
 end)
 
