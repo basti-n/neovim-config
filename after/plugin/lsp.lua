@@ -143,3 +143,17 @@ vim.diagnostic.config({
     virtual_text = true
 })
 
+
+-- language specific nvim-cmp
+cmp.setup.filetype('markdown', {
+    sources = cmp.config.sources {
+        {
+            name = 'look',
+            keyword_length = 2,
+            option = {
+                convert_case = true,
+                loud = true
+                --dict = '/usr/share/dict/words'
+            }
+        }}
+    })
