@@ -52,3 +52,11 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", { noremap = true  });
 vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true  });
 vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true  });
 vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true  });
+
+-- tabs
+vim.keymap.set("n", "<leader>tc", "<cmd>:tabclose<CR>")
+vim.keymap.set("n", "<leader>1tc", "<cmd>:tabclose 1<CR>")
+vim.keymap.set("n", "<leader>2tc", "<cmd>:tabclose 2<CR>")
+vim.keymap.set("n", "<leader>3tc", "<cmd>:tabclose 3<CR>")
+vim.keymap.set("n", "<leader>4tc", "<cmd>:tabclose 4<CR>")
+vim.keymap.set("n", "<leader>5tc", "<cmd>:tabclose 5<CR>")
