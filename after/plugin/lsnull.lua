@@ -14,7 +14,9 @@ null_ls.setup({
             vim.api.nvim_create_autocmd(event, {
                 buffer = bufnr,
                 group = group,
-                callback = function() vim.cmd.Prettier() end,
+                callback = function()
+                    vim.cmd.Prettier()
+                end,
                 desc = "[lsp] format on save",
             })
         end
@@ -23,4 +25,12 @@ null_ls.setup({
             vim.keymap.set("n", "<leader>f", '<cmd>Prettier<CR>', { buffer = bufnr, desc = "[lsp] format" })
         end
     end,
+    sources = {
+        null_ls.builtins.code_actions.refactoring,
+        null_ls.builtins.diagnostics.luacheck,
+        null_ls.builtins.diagnostics.markdownlint,
+        null_ls.builtins.diagnostics.tsc,
+        null_ls.builtins.formatting.buf,
+        null_ls.builtins.formatting.prettier,
+    },
 })

@@ -30,6 +30,7 @@ return require('packer').startup(function(use)
     }
 
     use('jose-elias-alvarez/null-ls.nvim')
+    use('jose-elias-alvarez/typescript.nvim')
     use('MunifTanjim/prettier.nvim')
     -- angular specific deps
     use { 'joeveiga/ng.nvim' }
