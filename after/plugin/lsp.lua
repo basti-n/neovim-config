@@ -25,7 +25,21 @@ require'lspconfig'.angularls.setup{
   root_dir = root_dir
 }
 require'lspconfig'.eslint.setup{
-  root_dir = root_dir
+    root_dir = root_dir,
+    flags = { debounce_text_changes = 500 },
+    on_attach = function(client, bufnr)
+        client.resolved_capabilities.document_formatting = true
+        if client.resolved_capabilities.document_formatting then
+            local au_lsp = vim.api.nvim_create_augroup("eslint_lsp", { clear = true })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                pattern = "*",
+                callback = function()
+                    vim.lsp.buf.formatting_sync()
+                end,
+                group = au_lsp,
+            })
+        end
+    end,
 }
 require("typescript").setup({
     disable_commands = false, -- prevent the plugin from creating Vim commands
