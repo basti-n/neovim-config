@@ -7,15 +7,24 @@ local nvim_tree = require("nvim-tree")
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
+local function my_on_attach(bufnr)
+    local api = require('nvim-tree.api')
+
+    local function opts(desc)
+        return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    end
+
+    api.config.mappings.default_on_attach(bufnr)
+
+    vim.keymap.set('n', 'u', api.node.navigate.parent, opts('Directoy Up'))
+end
+
 -- OR setup with some options
 nvim_tree.setup({
+    on_attach = my_on_attach,
     sort_by = "case_sensitive",
     view = {
         width = 40,
-        mappings = {
-            list = {
-                key = "u", action = "dir_up" }
-        }
     },
     renderer = {
         group_empty = true,
