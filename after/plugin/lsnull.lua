@@ -27,7 +27,7 @@ null_ls.setup({
     end,
     sources = {
         null_ls.builtins.code_actions.refactoring,
-        null_ls.builtins.diagnostics.luacheck,
+        -- null_ls.builtins.diagnostics.luacheck,
         null_ls.builtins.diagnostics.markdownlint,
         null_ls.builtins.diagnostics.tsc,
         null_ls.builtins.formatting.buf,
