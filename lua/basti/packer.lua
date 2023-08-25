@@ -116,5 +116,15 @@ return require('packer').startup(function(use)
     use { "mortepau/codicons.nvim" }
 
     use { "github/copilot.vim" }
+
+    use {
+        "NStefan002/speedtyper.nvim",
+        branch = "main",
+        config = function()
+            require('speedtyper').setup({
+                -- your config
+            })
+        end
+    }
 end)
 
