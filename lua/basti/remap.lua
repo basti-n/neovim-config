@@ -41,7 +41,6 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>,", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
-vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>");
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 
 vim.keymap.set("n", "<leader><leader>", function()
@@ -60,3 +59,6 @@ vim.keymap.set("n", "<leader>2tc", "<cmd>:tabclose 2<CR>")
 vim.keymap.set("n", "<leader>3tc", "<cmd>:tabclose 3<CR>")
 vim.keymap.set("n", "<leader>4tc", "<cmd>:tabclose 4<CR>")
 vim.keymap.set("n", "<leader>5tc", "<cmd>:tabclose 5<CR>")
+
+-- load packer
+vim.keymap.set("n", "<leader>vpp", "<cmd>e $NVIM_CONFIG/lua/basti/packer.lua<CR>");
