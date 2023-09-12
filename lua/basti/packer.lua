@@ -120,9 +120,7 @@ return require('packer').startup(function(use)
         "NStefan002/speedtyper.nvim",
         branch = "main",
         config = function()
-            require('speedtyper').setup({
-                -- your config
-            })
+            require('speedtyper').setup({})
         end
     }
 end)
