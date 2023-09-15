@@ -3,6 +3,19 @@ local null_ls = require("null-ls")
 local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
 local event = "BufWritePre" -- or "BufWritePost"
 
+local lsp_formatting = function(bufnr)
+    vim.lsp.buf.format({
+        callback = function()
+            vim.cmd.Prettier()
+        end,
+        filter = function(client)
+            -- apply whatever logic you want (in this example, we'll only use null-ls)
+            return client.name == "null-ls"
+        end,
+        bufnr = bufnr,
+    })
+end
+
 null_ls.setup({
     on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then
@@ -14,7 +27,7 @@ null_ls.setup({
                 buffer = bufnr,
                 group = group,
                 callback = function()
-                    vim.cmd.Prettier()
+                    lsp_formatting(bufnr)
                 end,
                 desc = "[lsp] format on save",
             })
@@ -26,7 +39,6 @@ null_ls.setup({
     end,
     sources = {
         null_ls.builtins.code_actions.refactoring,
-        -- null_ls.builtins.diagnostics.luacheck,
         null_ls.builtins.diagnostics.markdownlint,
         null_ls.builtins.diagnostics.tsc,
         null_ls.builtins.formatting.buf,
