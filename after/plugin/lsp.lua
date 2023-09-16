@@ -25,37 +25,14 @@ require'lspconfig'.angularls.setup{
   root_dir = root_dir
 }
 
-local lsp_formatting = function(bufnr)
-    vim.lsp.buf.format({
-        callback = function()
-            vim.lsp.buf.formatting_sync()
-        end,
-        filter = function(client)
-            -- apply whatever logic you want (in this example, we'll only use null-ls)
-            return client.name == "null-ls"
-        end,
-        bufnr = bufnr,
-    })
-end
-
 require'lspconfig'.eslint.setup{
     root_dir = root_dir,
     flags = { debounce_text_changes = 500 },
-    on_attach = function(client, bufnr)
+    on_attach = function(client)
         client.server_capabilities.document_formatting = true
-
-        if client.server_capabilities.document_formatting then
-            local au_lsp = vim.api.nvim_create_augroup("eslint_lsp", { clear = true })
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                pattern = "*",
-                callback = function()
-                    lsp_formatting(bufnr)
-                end,
-                group = au_lsp,
-            })
-        end
     end,
 }
+
 require("typescript").setup({
     disable_commands = false, -- prevent the plugin from creating Vim commands
     debug = false, -- enable debug logging for commands
@@ -156,6 +133,8 @@ lsp.set_preferences({
     }
 })
 
+local event = "BufWritePre"
+local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
 
@@ -170,7 +149,7 @@ lsp.on_attach(function(client, bufnr)
   -- vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-end)
+    end)
 
 lsp.setup()
 

@@ -29,7 +29,11 @@ return require('packer').startup(function(use)
         requires = { 'nvim-tree/nvim-web-devicons' }
     }
 
-    use('jose-elias-alvarez/null-ls.nvim')
+    use {
+        'stevearc/conform.nvim',
+        config = function() require('conform').setup() end
+    }
+
     use('jose-elias-alvarez/typescript.nvim')
     use('MunifTanjim/prettier.nvim')
     -- angular specific deps
