@@ -622,5 +622,11 @@
     "prefix": "log",
     "description": "console log",
     "body": ["console.log(${1:log-value});"]
+  },
+
+  "Console Debug": {
+    "prefix": "dbg",
+    "description": "console debug",
+    "body": ["console.debug(${1:log-value});"]
   }
 }
